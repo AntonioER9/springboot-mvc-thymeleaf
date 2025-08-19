@@ -4,10 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/demo.css}">
 </head>
 
 <body>
-    <p th:text="'Current time: ' + ${currentTime}">Current time will be displayed here.</p>
+    Hello World of Spring!
+
+<br><br>
+
+Student Name: <span th:text="${param.studentName}"/>
+
 </body>
 
 </html>
+
