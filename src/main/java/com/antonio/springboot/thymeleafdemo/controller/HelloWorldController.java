@@ -37,7 +37,7 @@ public class HelloWorldController {
         return "helloworld";
     }
 
-    @RequestMapping("/processFormVersionThree")
+    @GetMapping("/processFormVersionThree")
     public String processFormVersionThree(@RequestParam("studentName") String theName, Model model){
         // Convert the data to all uppercase
         theName = theName.toUpperCase();
@@ -51,6 +51,5 @@ public class HelloWorldController {
         // Return the view name
         return "helloworld";
     }
-
 
 }
