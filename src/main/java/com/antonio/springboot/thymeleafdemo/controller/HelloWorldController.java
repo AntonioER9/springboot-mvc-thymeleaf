@@ -1,12 +1,16 @@
 package com.antonio.springboot.thymeleafdemo.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloWorldController {
 
-    @RequestMapping("/showForm")
+    @GetMapping("/showForm")
     public String showForm(){
         return "helloworld-form";
     }
@@ -15,4 +19,38 @@ public class HelloWorldController {
     public String processForm(){
         return "helloworld";
     }
+
+    @RequestMapping("/processFormVersionTwo")
+    public String letsShoutDude(HttpServletRequest request, Model model){
+        String theName = request.getParameter("studentName");
+
+        // Convert the data to all uppercase
+        theName = theName.toUpperCase();
+
+        // Create the message
+        String result = "Yo! " + theName;
+
+        // Add message to the model
+        model.addAttribute("message", result);
+
+        // Return the view name
+        return "helloworld";
+    }
+
+    @RequestMapping("/processFormVersionThree")
+    public String processFormVersionThree(@RequestParam("studentName") String theName, Model model){
+        // Convert the data to all uppercase
+        theName = theName.toUpperCase();
+
+        // Create the message
+        String result = "Hey my Friend! " + theName;
+
+        // Add message to the model
+        model.addAttribute("message", result);
+
+        // Return the view name
+        return "helloworld";
+    }
+
+
 }
